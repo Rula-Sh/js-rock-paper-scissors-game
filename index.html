@@ -20,11 +20,26 @@
       <p>COMPUTER: <span id="computer-selection"></span></p>
     </div>
 
-    <h1 id="result"></h1>
+    <div id="round-result"></div>
 
     <div class="players-scores">
       <p>Player Score: <span id="player-score"></span></p>
       <p>Computer Score: <span id="computer-score"></span></p>
+    </div>
+
+    <div id="modals-container">
+      <div id="target-container" class="modal">
+        <h1>Select Winning Target</h1>
+        <input type="number" id="score-target" min="1" />
+        <button id="start" class="modal-btn">Start</button>
+      </div>
+      <div id="result-container" class="modal">
+        <h1 id="result">YOU WON!</h1>
+        <div class="buttons">
+          <button id="continue" class="modal-btn">Continue</button>
+          <button id="reset" class="modal-btn">Reset</button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>

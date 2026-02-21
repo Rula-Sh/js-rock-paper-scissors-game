@@ -4,18 +4,20 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 
 ## Features ✨
 
+- **Select winning target** - Choose the score needed to win
 - **Play against computer** - Random computer choices for each round
 - **Visual feedback** - See both player and computer selections
 - **Score tracking** - Real-time score updates for player and computer
+- **Modal view** - Select winning target at start and view final results in a modal popup
 
 ## Key Concepts Used 🧩
 
 - DOM selection `document.getElementById()`
 - Event Handling `.addEventListener()`
+- Event Delegation `e.target`
 - Conditional logic `if/else`
 - Switch Statement `switch()`
 - Ternary Operator `condition ? value1 : value2`
-- Event Delegation `e.target`
 - Update Properties`.style` `.textContent`
 
 ## Programming Languages Used 🛠️
@@ -31,5 +33,7 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 ## Future Enhancements 🚀
 
 - Add animation effects for results
+- Add random winning target
+- Add no winning target
+- Add popup on invalid winning target input
 - Add game history
-- Let players set a target score to win the game
