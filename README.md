@@ -4,7 +4,7 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 
 ## Features ✨
 
-- **Select winning target** - Choose the score needed to win
+- **Select winning target** - Choose the score needed to win: input your own, generate randomly, or play infinitely
 - **Play against computer** - Random computer choices for each round
 - **Visual feedback** - See both player and computer selections
 - **Score tracking** - Real-time score updates for player and computer
@@ -18,7 +18,7 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 - Conditional logic `if/else`
 - Switch Statement `switch()`
 - Ternary Operator `condition ? value1 : value2`
-- Update Properties`.style` `.textContent`
+- Read / Update Properties`.style` `.textContent` `.checked`
 
 ## Programming Languages Used 🛠️
 
@@ -33,7 +33,5 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 ## Future Enhancements 🚀
 
 - Add animation effects for results
-- Add random winning target
-- Add no winning target
 - Add popup on invalid winning target input
 - Add game history

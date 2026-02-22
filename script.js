@@ -7,8 +7,13 @@ const computerScoreElem = document.getElementById("computer-score");
 
 const modalsContainer = document.getElementById("modals-container");
 const targetContainer = document.getElementById("target-container");
-const scoreTarget = document.getElementById("score-target");
+const radioContainer = document.getElementById("radios-container");
+const numberRadBtn = document.getElementById("number");
+const randomRadBtn = document.getElementById("random");
+const infiniteRadBtn = document.getElementById("infinite");
+const scoreTargetInput = document.getElementById("score-target-input");
 const start = document.getElementById("start");
+
 const resultContainer = document.getElementById("result-container");
 const resultElem = document.getElementById("result");
 const reset = document.getElementById("reset");
@@ -67,9 +72,42 @@ selectionsElem.addEventListener("click", (e) => {
   }
 });
 
+radioContainer.addEventListener("click", () => {
+  if (numberRadBtn.checked) {
+    scoreTargetInput.style.display = "block";
+  } else {
+    scoreTargetInput.style.display = "none";
+  }
+});
+
+start.addEventListener("click", () => {
+  if (numberRadBtn.checked) {
+    if (scoreTargetInput.value === "" || Number(scoreTargetInput.value) <= 0) {
+      // TODO: popup
+    } else {
+      targetContainer.style.display = "none";
+      modalsContainer.style.display = "none";
+      targetScore = Number(scoreTargetInput.value);
+    }
+  } else {
+    if (randomRadBtn.checked) {
+      randomScore = Math.floor(Math.random() * 10 + 1);
+      targetScore = randomScore;
+      console.log(targetScore);
+    } else {
+      targetScore = "infinite";
+    }
+    targetContainer.style.display = "none";
+    modalsContainer.style.display = "none";
+  }
+});
+
 cont.addEventListener("click", () => {
-  targetScore += Number(scoreTarget.value);
-  console.log(targetScore);
+  if (numberRadBtn.checked) {
+    targetScore += Number(scoreTargetInput.value);
+  } else {
+    targetScore += randomScore;
+  }
   resultContainer.style.display = "none";
   modalsContainer.style.display = "none";
 });
@@ -83,19 +121,9 @@ reset.addEventListener("click", () => {
   computerScore = 0;
   result = "";
   targetScore = 0;
-  scoreTarget.value = "";
+  scoreTargetInput.value = "";
   updatePageContent();
   showModal("target");
-});
-
-start.addEventListener("click", () => {
-  if (scoreTarget.value === "" || Number(scoreTarget.value) <= 0) {
-    // TODO: popup
-  } else {
-    targetContainer.style.display = "none";
-    modalsContainer.style.display = "none";
-    targetScore = Number(scoreTarget.value);
-  }
 });
 
 function updatePageContent(roundWinner) {
@@ -122,7 +150,9 @@ function showModal(type) {
   if (type === "result") {
     resultContainer.style.display = "flex";
     resultElem.textContent = result;
+    targetContainer.style.display = "none";
   } else {
     targetContainer.style.display = "flex";
+    resultContainer.style.display = "none";
   }
 }
