@@ -9,6 +9,7 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 - **Visual feedback** - See both player and computer selections
 - **Score tracking** - Real-time score updates for player and computer
 - **Modal view** - Select winning target at start and view final results in a modal popup
+- **Confetti effect** - Show fireworks confetti when the player wins
 
 ## Key Concepts Used 🧩
 
@@ -19,6 +20,7 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 - Switch Statement `switch()`
 - Ternary Operator `condition ? value1 : value2`
 - Read / Update Properties`.style` `.textContent` `.checked`
+- `canvas-confetti` for win animations 🎊
 
 ## Programming Languages Used 🛠️
 
@@ -32,6 +34,5 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 
 ## Future Enhancements 🚀
 
-- Add animation effects for results
 - Add popup on invalid winning target input
 - Add game history
