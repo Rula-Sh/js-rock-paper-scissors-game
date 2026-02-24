@@ -5,6 +5,7 @@ const roundResult = document.getElementById("round-result");
 const playerScoreElem = document.getElementById("player-score");
 const computerScoreElem = document.getElementById("computer-score");
 
+const popupContainer = document.getElementById("popup-container");
 const modalsContainer = document.getElementById("modals-container");
 const targetContainer = document.getElementById("target-container");
 const radioContainer = document.getElementById("radios-container");
@@ -82,16 +83,15 @@ radioContainer.addEventListener("click", () => {
 });
 
 start.addEventListener("click", () => {
-  if (numberRadBtn.checked) {
-    if (scoreTargetInput.value === "" || Number(scoreTargetInput.value) <= 0) {
-      // TODO: popup
-    } else {
-      targetContainer.style.display = "none";
-      modalsContainer.style.display = "none";
-      targetScore = Number(scoreTargetInput.value);
-    }
+  if (
+    numberRadBtn.checked &&
+    (scoreTargetInput.value === "" || Number(scoreTargetInput.value) <= 0)
+  ) {
+    showPopup();
   } else {
-    if (randomRadBtn.checked) {
+    if (numberRadBtn.checked) {
+      targetScore = Number(scoreTargetInput.value);
+    } else if (randomRadBtn.checked) {
       randomScore = Math.floor(Math.random() * 10 + 1);
       targetScore = randomScore;
       console.log(targetScore);
@@ -115,17 +115,23 @@ cont.addEventListener("click", () => {
 });
 
 reset.addEventListener("click", () => {
+  scoreTargetInput.style.display = "none";
   resultContainer.style.display = "none";
   modalsContainer.style.display = "none";
+  numberRadBtn.checked = false;
+  randomRadBtn.checked = false;
+  infiniteRadBtn.checked = false;
+  scoreTargetInput.value = "";
   computerSelection = "";
   playerSelection = "";
-  playerScore = 0;
   computerScore = 0;
-  result = "";
+  playerScore = 0;
   targetScore = 0;
-  scoreTargetInput.value = "";
+  result = "";
   updatePageContent();
+  roundResult.textContent = "";
   showModal("target");
+  clearInterval(interval);
 });
 
 function updatePageContent(roundWinner) {
@@ -160,14 +166,25 @@ function showModal(type) {
   }
 }
 
+function showPopup() {
+  popupContainer.style.animation = "slide-in 1.5s";
+  popupContainer.style.display = "flex";
+  setTimeout(() => {
+    popupContainer.style.animation = "slide-out 1.5s";
+    setTimeout(() => {
+      popupContainer.style.display = "none";
+    }, 1000);
+  }, 4000);
+}
+
 function fireworksConfetti() {
   let duration = 15 * 1000;
   let animationEnd = Date.now() + duration;
-  let defaults = { startVelocity: 20, spread: 360, ticks: 100, zIndex: 1 };
+  let defaults = { startVelocity: 20, spread: 360, ticks: 100, zIndex: 3 };
 
   interval = setInterval(function () {
     let timeLeft = animationEnd - Date.now();
-    let particleCount = 50 * (timeLeft / duration);  // to decrease the particleCount at the end of the effect
+    let particleCount = 50 * (timeLeft / duration); // to decrease the particleCount at the end of the effect
 
     if (timeLeft <= 0) {
       return clearInterval(interval);

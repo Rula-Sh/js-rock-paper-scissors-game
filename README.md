@@ -8,8 +8,9 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 - **Play against computer** - Random computer choices for each round
 - **Visual feedback** - See both player and computer selections
 - **Score tracking** - Real-time score updates for player and computer
-- **Modal view** - Select winning target at start and view final results in a modal popup
+- **Modal view** - Select winning target at start and view final results in a modal
 - **Confetti effect** - Show fireworks confetti when the player wins
+- **Popup** - Show popup on invalid winning target input
 
 ## Key Concepts Used 🧩
 
@@ -34,5 +35,4 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 
 ## Future Enhancements 🚀
 
-- Add popup on invalid winning target input
 - Add game history
