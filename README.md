@@ -29,9 +29,19 @@ A classic Rock Paper Scissors game where players compete against the computer. T
 - CSS
 - JavaScript
 
-## Screenshot 📸
+## Screenshots 📸
 
-![Screenshot of Rock Paper Scissors Game interface](img/js-rock-paper-scissors-game-screenshot.png)
+### Selecting Winning Target
+
+![Selecting the winning target type in Rock Paper Scissors](images/js-rock-paper-scissors-select-winning-target.png)
+
+### Game Play
+
+![Main Rock Paper Scissors gameplay interface](images/js-rock-paper-scissors-game-play.png)
+
+### Winning The Game
+
+![Victory screen showing "YOU WON" message with confetti animation](images/js-rock-paper-scissors-winning-the-game.png)
 
 ## Future Enhancements 🚀
 
