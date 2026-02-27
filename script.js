@@ -4,6 +4,9 @@ const computerSelectionElem = document.getElementById("computer-selection");
 const roundResult = document.getElementById("round-result");
 const playerScoreElem = document.getElementById("player-score");
 const computerScoreElem = document.getElementById("computer-score");
+const gameHistoryIcon = document.getElementById("game-history-icon");
+const closeIcon = document.getElementById("close-icon");
+const gameHistoryElem = document.getElementById("game-history-container");
 
 const popupContainer = document.getElementById("popup-container");
 const modalsContainer = document.getElementById("modals-container");
@@ -92,7 +95,7 @@ start.addEventListener("click", () => {
     if (numberRadBtn.checked) {
       targetScore = Number(scoreTargetInput.value);
     } else if (randomRadBtn.checked) {
-      randomScore = Math.floor(Math.random() * 10 + 1);
+      randomScore = Math.floor(Math.random() * 20 + 1);
       targetScore = randomScore;
       console.log(targetScore);
     } else {
@@ -115,6 +118,8 @@ cont.addEventListener("click", () => {
 });
 
 reset.addEventListener("click", () => {
+  addResultsToGameHistory(playerScore, computerScore);
+
   scoreTargetInput.style.display = "none";
   resultContainer.style.display = "none";
   modalsContainer.style.display = "none";
@@ -132,6 +137,18 @@ reset.addEventListener("click", () => {
   roundResult.textContent = "";
   showModal("target");
   clearInterval(interval);
+});
+
+gameHistoryIcon.addEventListener("click", () => {
+  gameHistoryElem.style.animation = "slide-in-from-left 1.5s";
+  gameHistoryElem.style.display = "flex";
+});
+
+closeIcon.addEventListener("click", () => {
+  gameHistoryElem.style.animation = "slide-out-left 1.5s";
+  setTimeout(() => {
+    gameHistoryElem.style.display = "none";
+  }, 1400);
 });
 
 function updatePageContent(roundWinner) {
@@ -167,10 +184,10 @@ function showModal(type) {
 }
 
 function showPopup() {
-  popupContainer.style.animation = "slide-in 1.5s";
+  popupContainer.style.animation = "slide-in-from-right 1.5s";
   popupContainer.style.display = "flex";
   setTimeout(() => {
-    popupContainer.style.animation = "slide-out 1.5s";
+    popupContainer.style.animation = "slide-out-right 1.5s";
     setTimeout(() => {
       popupContainer.style.display = "none";
     }, 1000);
@@ -205,4 +222,20 @@ function fireworksConfetti() {
 
 function randomInRange(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function addResultsToGameHistory(playerScore, computerScore) {
+  const horizontalRuleElem = document.createElement("hr");
+  const lastGameResultElem = document.createElement("div");
+  const GameHistoryTitle = document.getElementById("game-history-title");
+  const playerWon = playerScore > computerScore;
+  lastGameResultElem.innerHTML = `
+  <strong class="${playerWon ? "green" : "red"}">${playerWon ? "Player Won" : "Computor Won"}</strong>
+  <p>
+    <span class="${playerWon ? "green" : "black"}">${playerScore}</span> : 
+    <span class="${playerWon ? "black" : "red"}">${computerScore}</span>
+  </p>
+  `;
+  GameHistoryTitle.after(lastGameResultElem);
+  GameHistoryTitle.after(horizontalRuleElem);
 }
